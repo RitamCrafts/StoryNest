@@ -1,11 +1,10 @@
-
-import './App.css'
+import React from "react";
 
 function App() {
-
+  console.log(import.meta.env.VITE_TEST_ENV);
   return (
     <>
-      <h1 className="bg-amber-800 text-5xl text-mist-100">Hello world</h1>
+      <h1 className="text-5xl text-blue-100">BlogNest</h1>
     </>
   )
 }
