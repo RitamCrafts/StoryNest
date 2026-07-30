@@ -25,13 +25,16 @@ function App() {
   
   return(
     <>
-      <div className="relative h-screen overflow-hidden">
+      <div className="relative min-h-screen">
 
         <LeafyBG />
-        <Header/>
-        <div className="h-screen"></div>
-        <Outlet/>
-        <Footer/>
+        <div className="min-h-screen flex flex-col">
+          <Header />
+          <main className="flex-1">
+            <Outlet/>
+          </main>
+          <Footer />
+        </div>
         
 
 

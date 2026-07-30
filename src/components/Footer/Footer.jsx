@@ -10,7 +10,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-5">
-              <Logo width="170px" />
+              <Logo width="150px" short={false} />
             </div>
 
             <p className="max-w-xs text-sm leading-6 text-gray-600">
@@ -38,19 +38,49 @@ export default function Footer() {
 
               <li>
                 <Link
-                  to="/all-posts"
+                  to="/discover"
                   className="text-gray-600 transition-colors hover:text-green-700"
                 >
-                  All Posts
+                  All Blogs
                 </Link>
               </li>
 
               <li>
                 <Link
-                  to="/add-post"
+                  to="/create-blog"
                   className="text-gray-600 transition-colors hover:text-green-700"
                 >
                   Write a Story
+                </Link>
+              </li>
+
+            </ul>
+          </div>
+
+          {/* Support */}
+          <div>
+            <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-green-700">
+              Support
+            </h3>
+
+            <ul className="space-y-3">
+
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-gray-600 transition-colors hover:text-green-700"
+                >
+                  Contact Us
+                </Link>
+              </li>
+
+
+              <li>
+                <Link
+                  to="/feedback"
+                  className="text-gray-600 transition-colors hover:text-green-700"
+                >
+                  Feedback
                 </Link>
               </li>
 
@@ -62,51 +92,8 @@ export default function Footer() {
                   About BlogNest
                 </Link>
               </li>
-            </ul>
-          </div>
 
-          {/* Support */}
-          <div>
-            <h3 className="mb-5 text-sm font-semibold uppercase tracking-wider text-green-700">
-              Support
-            </h3>
 
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  to="/help"
-                  className="text-gray-600 transition-colors hover:text-green-700"
-                >
-                  Help Center
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-gray-600 transition-colors hover:text-green-700"
-                >
-                  Contact Us
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/faq"
-                  className="text-gray-600 transition-colors hover:text-green-700"
-                >
-                  FAQs
-                </Link>
-              </li>
-
-              <li>
-                <Link
-                  to="/feedback"
-                  className="text-gray-600 transition-colors hover:text-green-700"
-                >
-                  Feedback
-                </Link>
-              </li>
             </ul>
           </div>
 
