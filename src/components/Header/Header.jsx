@@ -9,7 +9,6 @@ import DiscoverBtn from "./DiscoverBtn";
 import CreateBlogBtn from "./CreateBlogBtn";
 import ProfileBtn from "./ProfileBtn";
 import AboutBtn from "./AboutBtn";
-
 import SignUpBtn from "./SignUpBtn";
 import LoginBtn from "./LoginBtn";
 import { useAuthContext } from "../../context/AuthContext";
@@ -23,7 +22,7 @@ export default function Header() {
         {/* Logo */}
         <Link
           to="/"
-          className="flex items-center gap-3 flex-shrink-0"
+          className="flex items-center gap-3 shrink-0"
         >
           {/* Full logo on sm and above */}
           <Logo
