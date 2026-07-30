@@ -6,7 +6,7 @@ export default function AboutBtn() {
     <NavLink
       to="/about"
       className={({ isActive }) =>
-        `relative sm:px-3 px-2 py-1 text-sm font-medium transition-colors duration-200 ${
+        `relative px-2 py-1 text-sm font-medium transition-colors duration-200 ${
           isActive
             ? "text-green-700"
             : "text-gray-600 hover:text-green-700"

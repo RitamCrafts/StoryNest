@@ -6,7 +6,7 @@ export default function LoginBtn() {
     <NavLink
       to="/login"
       className={({ isActive }) =>
-        `relative px-2 sm:px-3 py-1 text-sm font-medium transition-colors duration-200 ${
+        `relative px-2 py-1 text-sm font-medium transition-colors duration-200 ${
           isActive
             ? "text-green-700"
             : "text-gray-600 hover:text-green-700"

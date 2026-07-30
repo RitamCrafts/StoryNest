@@ -42,9 +42,9 @@ export default function Header() {
         </Link>
 
         {/* Navigation */}
-        <nav className="flex items-center gap-1 md:gap-3 sm:gap-2">
+        <nav className="flex items-center gap-1 md:gap-4 sm:gap-2">
 
-          {!authContext.status?(
+          {authContext.status?(
             <>
 
               <HomeBtn/>
