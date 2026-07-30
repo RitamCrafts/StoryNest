@@ -8,7 +8,7 @@ export default function CommonButton({
 }) {
   const styles = {
     primary:
-      "bg-green-600 text-white hover:bg-green-700 active:scale-[0.98]",
+      "bg-green-700 text-white hover:bg-green-700 active:scale-[0.98]",
 
     secondary:
       "bg-green-50 text-green-700 hover:bg-green-100",
@@ -32,7 +32,7 @@ export default function CommonButton({
         justify-center
         gap-2
 
-        rounded-xl
+        rounded-md
         px-5
         py-2.5
 

@@ -16,8 +16,8 @@ import { useAuthContext } from "../../context/AuthContext";
 export default function Header() {
   const authContext = useAuthContext();
   return (
-    <header className="sticky top-4 z-100 px-4 sm:px-6 mb-4">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl border border-green-100/70 bg-white/70 px-6 shadow-xl backdrop-blur-xl">
+    <header className="sticky top-2 z-100 px-2 sm:px-6 mb-4">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between rounded-2xl border border-green-100/70 bg-white/70 px-6 shadow-lg backdrop-blur-xl">
 
         {/* Logo */}
         <Link
