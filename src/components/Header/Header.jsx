@@ -25,7 +25,7 @@ export default function Header() {
           >
             {/* Full logo */}
             <Logo
-              width="140px"
+              width="160px"
               short={false}
               className="hidden transition-transform duration-200 hover:scale-[1.02] sm:block"
             />

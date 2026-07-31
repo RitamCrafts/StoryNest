@@ -17,21 +17,21 @@ function About() {
           {/* Heading */}
           <h1 className="text-4xl font-bold">
             <span className="text-green-700">About</span>{" "}
-            <span className="text-gray-800">BlogNest</span>
+            <span className="text-gray-800">StoryNest</span>
           </h1>
 
           <p className="mt-4 max-w-2xl text-gray-600 leading-7">
-            BlogNest is a clean and peaceful platform built for people who
+            StoryNest is a clean and peaceful platform built for people who
             love to write, share ideas, and discover meaningful stories.
             Whether you're publishing your first article or reading something
-            inspiring, BlogNest keeps the experience simple and distraction
+            inspiring, StoryNest keeps the experience simple and distraction
             free.
           </p>
 
           <div className="mt-8 flex flex-wrap justify-center gap-4">
             <Link to="/signup">
               <CommonButton variant="primary">
-                Join BlogNest
+                Join StoryNest
               </CommonButton>
             </Link>
 
@@ -83,13 +83,13 @@ function About() {
 
       <CommonBox className="mt-8">
         <h2 className="mb-4 text-2xl font-bold text-gray-800">
-          Why BlogNest?
+          Why StoryNest?
         </h2>
 
         <div className="space-y-4 text-gray-600 leading-7">
           <p>
             We believe writing should feel effortless and reading should feel
-            peaceful. That's why BlogNest focuses on clean design, minimal
+            peaceful. That's why StoryNest focuses on clean design, minimal
             distractions, and a pleasant reading experience.
           </p>
 

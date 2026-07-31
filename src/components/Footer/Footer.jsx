@@ -4,13 +4,13 @@ import Logo from "../Logo";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-green-200/70 bg-white/70 backdrop-blur-md">
+    <footer className="border-t border-green-200/70 bg-white/70 backdrop-blur-md mt-4">
       <div className="mx-auto max-w-7xl px-6 py-12">
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
           {/* Brand */}
           <div>
             <div className="mb-5">
-              <Logo width="150px" short={false} />
+              <Logo width="200px" short={false} />
             </div>
 
             <p className="max-w-xs text-sm leading-6 text-gray-600">
@@ -89,7 +89,7 @@ export default function Footer() {
                   to="/about"
                   className="text-gray-600 transition-colors hover:text-green-700"
                 >
-                  About BlogNest
+                  About StoryNest
                 </Link>
               </li>
 
@@ -137,7 +137,7 @@ export default function Footer() {
         {/* Bottom */}
         <div className="mt-10 flex flex-col items-center justify-between gap-4 border-t border-green-200/70 pt-6 text-sm text-gray-500 md:flex-row">
           <p>
-            © {new Date().getFullYear()} <span className="font-semibold text-green-700">BlogNest</span>. All
+            © {new Date().getFullYear()} <span className="font-semibold text-green-700">StoryNest</span>. All
             rights reserved.
           </p>
 

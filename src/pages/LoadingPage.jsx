@@ -2,7 +2,7 @@ import React from "react";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import LeafyBG from "../components/Backgrounds/LeafyBG";
-import logo from "../assets/BlogNest-shortLogo.png";
+import logo from "../assets/StoryNest-shortLogo.png";
 
 export default function Loading() {
   return (
@@ -42,7 +42,7 @@ export default function Loading() {
           >
             <img
               src={logo}
-              alt="BlogNest"
+              alt="StoryNest"
               draggable={false}
               className="h-12 w-12 select-none object-contain"
             />
@@ -51,7 +51,7 @@ export default function Loading() {
 
         {/* Title */}
         <h1 className="mt-10 text-4xl font-bold tracking-tight text-green-800">
-          <span className="text-green-700">Blog</span><span className="text-slate-700">Nest</span>
+          <span className="text-green-700">Story</span><span className="text-slate-700">Nest</span>
         </h1>
 
         {/* Subtitle */}

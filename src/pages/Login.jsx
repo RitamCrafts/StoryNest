@@ -20,7 +20,7 @@ function Login() {
                     shadow-[0_10px_35px_rgba(22,101,52,0.08)]
                     p-3" 
                 >
-                    <Logo width="50px"/>
+                    <Logo width="60px"/>
                 </div>
             </div>
             
