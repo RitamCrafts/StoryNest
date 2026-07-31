@@ -9,7 +9,7 @@ function ProfileBtn() {
     <div className="relative">
       <button
         title="Profile"
-        className="rounded-full p-2 transition hover:bg-green-100 hover:scale-105"
+        className="rounded-full cursor-pointer p-2 transition hover:bg-green-100 hover:scale-105"
         onClick={() => setProfileDropdownActive((prev) => !prev)}
       >
         <UserAvatarIcon size={35} />

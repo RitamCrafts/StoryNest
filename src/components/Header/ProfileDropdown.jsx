@@ -2,22 +2,26 @@ import React from "react";
 import { X } from "lucide-react";
 import UserAvatarIcon from "./UserAvatarIcon";
 import LogoutBtn from "./LogoutBtn";
+import { useAuthContext } from "../../context/AuthContext";
 
 export default function ProfileDropdown({
   user = {
-    name: "Your Name",
-    email: "you@example.com",
+    name: "You",
+    email: "no@data.com",
   },
   onLogout,
   closeDropdown,
 }) {
+  const auth = useAuthContext();
+  user.email = auth.userData.email;
+  user.name = auth.userData.name;
   return (
     <div className="absolute -right-4 top-14 z-50 mt-2 w-64 overflow-hidden rounded-2xl border border-green-100 bg-white/90 shadow-2xl backdrop-blur-xl">
 
       {/* Close Button */}
       <button
         onClick={closeDropdown}
-        className="absolute right-3 top-3 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
+        className="absolute cursor-pointer right-3 top-3 rounded-full p-1 text-gray-400 transition hover:bg-gray-100 hover:text-gray-700"
       >
         <X size={16} />
       </button>

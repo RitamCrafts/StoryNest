@@ -3,7 +3,7 @@ import { CommonBox, CommonButton } from "../components/Common";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 
-function About() {
+function AboutPage() {
   return (
     <div className="mx-auto my-4 max-w-5xl px-4">
       <CommonBox>
@@ -104,4 +104,4 @@ function About() {
   );
 }
 
-export default About;
+export default AboutPage;

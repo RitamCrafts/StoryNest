@@ -1,7 +1,7 @@
-import React,{useRef,useState} from "react";
+import React,{useState} from "react";
 import { useAuthContext } from "../context/AuthContext";
 import { Link,useNavigate } from "react-router-dom";
-import {CommonBox, CommonButton, CommonInput} from "../components/Common"
+import {CommonButton, CommonInput} from "../components/Common"
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 import { AlertCircle } from "lucide-react";

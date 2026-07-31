@@ -2,6 +2,7 @@ import React,{useRef} from "react";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 import Login from "../components/Login";
+import { CommonBox } from "../components/Common";
 
 function LoginPage() {
   const emailRef = useRef(null);

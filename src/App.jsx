@@ -23,27 +23,34 @@ function App() {
 
   },[]);
   
-  return(
-    <>
-      <div className="relative min-h-screen">
+  if(loading)
+    return(
+      <>
+        <Loading/>
+        <LeafyBG/>
+      </>
+    )
 
-        <LeafyBG />
-        <div className="min-h-screen flex flex-col">
-          <Header />
-          <main className="flex-1">
-            <Outlet/>
-          </main>
-          <Footer />
-        </div>
+  else
+
+    return(
+      <>
+        <div className="relative min-h-screen">
+
+          <LeafyBG />
+          <div className="min-h-screen flex flex-col">
+            <Header />
+            <main className="flex-1">
+              <Outlet/>
+            </main>
+            <Footer />
+          </div>
         
 
-
-        {loading?<Loading/>:null}   
-
-
-      </div> 
-    </>
-  )
+        </div> 
+      </>
+    )
+    
 }
 
 export default App

@@ -7,7 +7,7 @@ function DiscoverBtn() {
     <NavLink
             to="/discover"
             className={({ isActive }) =>
-              `flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition-all ${
+              `flex items-center gap-2 cursor-pointer rounded-full px-4 py-2 text-sm font-medium transition-all ${
                 isActive
                   ? "bg-green-100 text-green-700"
                   : "text-gray-600 hover:bg-green-50 hover:text-green-700"
