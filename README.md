@@ -15,6 +15,7 @@ StoryNest is a clean and peaceful blogging platform designed for writers and rea
 ## Upcoming Features (maybe)
 
 - Rich text editor
+- User Verification
 - User profiles
 - Bookmarks
 - Search functionality

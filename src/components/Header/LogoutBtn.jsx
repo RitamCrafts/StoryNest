@@ -2,12 +2,16 @@ import React from 'react'
 import { useAuthContext } from '../../context/AuthContext'
 import authService, { AuthService } from '../../appwrite/auth';
 import { LogOut } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+
 
 function LogoutBtn({closeDropdown}) {
     const auth=useAuthContext();
+    const navigate = useNavigate();
 
     const logoutHandler = () => {
       authService.logout().then(()=>{
+          navigate("/about");
           auth.logout();
           closeDropdown();
         })
