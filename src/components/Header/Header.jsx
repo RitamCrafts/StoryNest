@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Logo from "../Logo";
 import HomeBtn from "./HomeBtn";
 import DiscoverBtn from "./DiscoverBtn";
-import CreateBlogBtn from "./CreateBlogBtn";
+import CreatePostBtn from "./CreatePostBtn";
 import ProfileBtn from "./ProfileBtn";
 import AboutBtn from "./AboutBtn";
 import SignUpBtn from "./SignUpBtn";
@@ -44,7 +44,7 @@ export default function Header() {
               <>
                 <HomeBtn />
                 <DiscoverBtn />
-                <CreateBlogBtn />
+                <CreatePostBtn />
                 <ProfileBtn />
               </>
             ) : (

@@ -1,10 +1,10 @@
 import React from 'react'
 import { SquarePen } from 'lucide-react'
 
-function CreateBlogBtn() {
+function CreatePostBtn() {
   return (
     <button
-            title="Create Blog"
+            title="Create Post"
             className="rounded-full p-2.5 text-green-700 transition hover:bg-green-100 hover:scale-105"
           >
             <SquarePen size={22} />
@@ -12,4 +12,4 @@ function CreateBlogBtn() {
   )
 }
 
-export default CreateBlogBtn
+export default CreatePostBtn

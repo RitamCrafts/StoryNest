@@ -31,6 +31,7 @@ export default function CommonButton({
         items-center
         justify-center
         gap-2
+        cursor-pointer
 
         rounded-md
         px-5

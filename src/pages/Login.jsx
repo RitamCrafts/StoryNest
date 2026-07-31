@@ -1,6 +1,6 @@
 import React,{useRef} from "react";
 import CommonInput from "../components/Common/CommonInput";
-import {CommonBox, CommonButton} from "../components/Common"
+import {CommonBox, CommonButton, CommonSelect} from "../components/Common"
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 
@@ -10,7 +10,7 @@ function Login() {
   return (
     <div className="max-w-lg mx-auto my-4 px-4">
       <CommonBox>
-        <div className="flex flex-col gap-y-1.5">
+        <div className="flex flex-col gap-y-1.5 select-none">
 
             <div className="circleLogo flex justify-center items-center">
                 <div className="rounded-full
@@ -49,6 +49,8 @@ function Login() {
                     Sign Up
                 </Link>
             </div>
+
+
         </div>
       </CommonBox>
     </div>

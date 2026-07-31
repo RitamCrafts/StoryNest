@@ -41,7 +41,7 @@ export default function Footer() {
                   to="/discover"
                   className="text-gray-600 transition-colors hover:text-green-700"
                 >
-                  All Blogs
+                  Latest Stories
                 </Link>
               </li>
 
