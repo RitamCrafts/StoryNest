@@ -1,4 +1,4 @@
 import LeafyBG from "./LeafyBG";
-import EmergencyBG from "./EmergencyBG";
+import PlainBG from "./PlainBG";
 
-export {LeafyBG,EmergencyBG};
+export {LeafyBG,PlainBG};

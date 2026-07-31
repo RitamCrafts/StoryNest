@@ -9,11 +9,12 @@ import App from './App.jsx'
 import HomePage from './pages/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import DiscoverPage from './pages/DiscoverPage.jsx';
+import ErrorPage from './pages/ErrorPage.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import PublicRoute from './PublicRoute.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
-  <Route path='/' element={<App/>}>
+  <Route path='/' element={<App/>} errorElement={<ErrorPage />}>
 
     <Route element={<ProtectedRoute/>}>
         <Route index element={<HomePage/>}/>

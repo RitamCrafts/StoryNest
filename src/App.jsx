@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./context/AuthContext";
 import authService from "./appwrite/auth.js";
-import {EmergencyBG,LeafyBG} from "./components/Backgrounds";
+import {PlainBG,LeafyBG} from "./components/Backgrounds";
 import { Outlet } from "react-router-dom";
 import Loading from "./pages/LoadingPage.jsx";
 import { Header,Footer } from "./components/index.js";
