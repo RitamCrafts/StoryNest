@@ -1,10 +1,11 @@
 import React,{useState} from "react";
 import { useAuthContext } from "../context/AuthContext";
-import { Link,useNavigate } from "react-router-dom";
+import { Link,Navigate,useNavigate,useLocation } from "react-router-dom";
 import {CommonButton, CommonInput} from "../components/Common"
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 import { AlertCircle } from "lucide-react";
+
 
 function Login() {
     const auth = useAuthContext();
@@ -12,6 +13,8 @@ function Login() {
     const { register,handleSubmit,formState:{errors} } = useForm();
     const [error,setError] = useState("");
     const [loading, setLoading] = useState(false);
+    const location = useLocation();
+    const redirectTo = location.state?.from?.pathname || "/"
 
     const login = async(data) => {
         if (loading) return;
@@ -23,7 +26,7 @@ function Login() {
             if( session ){
                 const userData = await authService.getCurrentUser();
                 if (userData) auth.login(userData);
-                navigate("/");
+                navigate(redirectTo);
             }
         } catch (err) {
             if (err.code === 401) {
@@ -36,6 +39,9 @@ function Login() {
         }
     };
 
+    if (auth.status) {
+        return <Navigate to="/" replace />;
+    }
   return (
     <div>
         <form onSubmit={handleSubmit(login)} noValidate className="loginForm flex flex-col gap-y-1.5">
