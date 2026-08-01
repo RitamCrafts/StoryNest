@@ -10,8 +10,8 @@ import HomePage from './pages/HomePage.jsx';
 import LoginPage from './pages/LoginPage.jsx';
 import DiscoverPage from './pages/DiscoverPage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
-import ProtectedRoute from './ProtectedRoute.jsx';
-import PublicRoute from './PublicRoute.jsx';
+
+import {PublicRoute,ProtectedRoute} from './utils';
 import SignUpPage from './pages/SignUpPage.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(

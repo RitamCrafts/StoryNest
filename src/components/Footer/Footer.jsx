@@ -47,7 +47,7 @@ export default function Footer() {
 
               <li>
                 <Link
-                  to="/create-blog"
+                  to="/write"
                   className="text-gray-600 transition-colors hover:text-green-700"
                 >
                   Write a Story
