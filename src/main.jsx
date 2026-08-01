@@ -12,6 +12,7 @@ import DiscoverPage from './pages/DiscoverPage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 import ProtectedRoute from './ProtectedRoute.jsx';
 import PublicRoute from './PublicRoute.jsx';
+import SignUpPage from './pages/SignUpPage.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App/>} errorElement={<ErrorPage />}>
@@ -25,6 +26,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route element={<PublicRoute/>}>
         <Route path='/about' element={<AboutPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
+        <Route path='/signup' element={<SignUpPage/>}/>
     </Route>
 
   </Route>
