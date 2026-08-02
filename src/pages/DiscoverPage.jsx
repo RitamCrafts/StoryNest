@@ -1,9 +1,63 @@
-import React from 'react'
+import { Compass, Leaf } from "lucide-react";
+
+import PostCardGrid from "../components/General/PostCardGrid";
 
 function DiscoverPage() {
-  return (
-    <div>DiscoverPage</div>
-  )
+    const posts = [];
+
+    return (
+        <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-8 md:px-10 lg:px-20 py-5">
+            {/* Hero */}
+            <section className="mb-7">
+                <div className="flex items-center gap-3 sm:-ml-1"> 
+                    <h1 className="flex flex-wrap items-center gap-x-3 gap-y-2 text-3xl font-bold leading-none tracking-tight text-gray-900">
+
+                      <div className="flex shrink-0 items-center gap-2">
+                          <Compass
+                              size={25}
+                              strokeWidth={2.3}
+                              className="text-green-700 hidden sm:inline-block"
+                          />
+
+                          <span className="text-green-700">
+                              Discover
+                          </span>
+                      </div>
+
+
+                      <div className="flex shrink-0 items-center gap-2">
+                          <span>Stories</span>
+
+                          <Leaf
+                              size={20}
+                              strokeWidth={2.5}
+                              className="translate-y-1 text-green-800/60"
+                          />
+                      </div>
+
+                  </h1>
+                </div>
+
+                <p className="mt-3 max-w-2xl text-lg font-medium text-gray-500">
+                    Explore the latest stories shared by writers from around the
+                    world.
+                </p>
+            </section>
+
+            <section className="mb-6 flex items-center gap-4">
+                <span className="text-sm font-semibold uppercase tracking-wide text-gray-500 whitespace-nowrap">
+                    Showing {Math.min(posts.length, 30)} stories
+                </span>
+
+                <div className="h-px flex-1 bg-green-800/20" />
+            </section>
+
+            {/* Posts */}
+            <section>
+                <PostCardGrid posts={posts} />
+            </section>
+        </div>
+    );
 }
 
-export default DiscoverPage
+export default DiscoverPage;

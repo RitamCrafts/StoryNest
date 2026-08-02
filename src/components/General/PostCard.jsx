@@ -31,7 +31,7 @@ function PostCard({ $id, title, featuredImage }) {
                 md:w-full
 
                 h-[120px]
-                md:h-[190px]
+                md:h-[140px]
 
                 shrink-0
                 overflow-hidden

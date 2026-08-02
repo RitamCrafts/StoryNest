@@ -2,7 +2,6 @@ import { FileText } from "lucide-react";
 import { useAuthContext } from "../context/AuthContext";
 import WelcomeSection from "../components/Home/WelcomeSection";
 import QuoteBox from "../components/Home/QuoteBox";
-import PostCard from "../components/General/PostCard.jsx"
 import testImage from "../assets/testImage.jpeg"
 import UserPostsHeader from "../components/Home/UserPostsheader.jsx";
 import PostCardGrid from "../components/General/PostCardGrid.jsx";
@@ -10,6 +9,7 @@ import PostCardGrid from "../components/General/PostCardGrid.jsx";
 
 function HomePage() {
     const auth = useAuthContext();
+    const posts = [];
     const testPosts = [
         {
             $id:"323d",
@@ -44,13 +44,10 @@ function HomePage() {
             <section className="pb-7 flex flex-col gap-y-8 md:flex-row md:justify-between h-xs">
                 <WelcomeSection name={auth.userData.name} />
                 <QuoteBox />
-                
-
-
-                
-
             </section>
-            <UserPostsHeader margin="mb-6 md:mb-9 lg:-ml-4"/>
+
+            {/*Post Grid*/}
+            {(posts.length>0) && <UserPostsHeader margin="mb-6 md:mb-9 lg:-ml-4"/>}
 
         </div>
     );
