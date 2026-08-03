@@ -3,7 +3,7 @@ import { useAuthContext } from "../context/AuthContext";
 import WelcomeSection from "../components/Home/WelcomeSection";
 import QuoteBox from "../components/Home/QuoteBox";
 import testImage from "../assets/testImage.jpeg"
-import UserPostsHeader from "../components/Home/UserPostsheader.jsx";
+import UserPostsHeader from "../components/Home/UserPostsHeader.jsx";
 import PostCardGrid from "../components/General/PostCardGrid.jsx";
 
 
