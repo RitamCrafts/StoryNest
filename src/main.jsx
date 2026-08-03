@@ -14,6 +14,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import {PublicRoute,ProtectedRoute} from './utils';
 import SignUpPage from './pages/SignUpPage.jsx';
 import TestPage from './pages/TestPage.jsx';
+import PostForm from './components/General/PostForm/PostForm.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App/>} errorElement={<ErrorPage />}>
@@ -22,6 +23,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route index element={<HomePage/>}/>
         <Route path='/home' element={<HomePage/>}/>
         <Route path='/discover' element={<DiscoverPage/>}/>
+        <Route path='/write' element={<PostForm/>}/>
     </Route>
 
     <Route element={<PublicRoute/>}>

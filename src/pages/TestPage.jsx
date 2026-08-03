@@ -1,15 +1,16 @@
 import { useForm } from "react-hook-form";
 import UploadImage from "../components/General/UploadImage";
+import RTE from "../components/General/RTE";
 
 export default function TestPage() {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit , control } = useForm();
 
     const submit = (data) => {
         console.log(data);
     };
 
     return (
-        <div className="mx-auto max-w-lg p-10">
+        <div className="mx-auto max-w-full p-10">
             <form onSubmit={handleSubmit(submit)}>
                 <UploadImage
                     register={register}
@@ -18,6 +19,8 @@ export default function TestPage() {
                     scaleBtns="text-sm px-3 py-2"
                     iconSize="h-8 w-8"
                 />
+
+                <RTE name="content" control={control}/>
 
                 <button className="mt-6 rounded-xl bg-green-700 px-5 py-3 text-white">
                     Submit
