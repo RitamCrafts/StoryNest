@@ -13,6 +13,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 
 import {PublicRoute,ProtectedRoute} from './utils';
 import SignUpPage from './pages/SignUpPage.jsx';
+import TestPage from './pages/TestPage.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App/>} errorElement={<ErrorPage />}>
@@ -27,6 +28,7 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path='/about' element={<AboutPage/>}/>
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
+        <Route path='/test-page' element={<TestPage/>}/>
     </Route>
 
   </Route>

@@ -16,7 +16,7 @@ export default function ProfileDropdown({
   user.email = auth.userData.email;
   user.name = auth.userData.name;
   return (
-    <div className="absolute -right-4 top-14 z-50 mt-2 w-64 overflow-hidden rounded-2xl border border-green-100 bg-white/90 shadow-2xl backdrop-blur-xl">
+    <div className="absolute -right-4 top-14 z-50 mt-2 w-64 overflow-hidden rounded-2xl border border-green-100 bg-[#fbfefb] shadow-2xl backdrop-blur-3xl">
 
       {/* Close Button */}
       <button

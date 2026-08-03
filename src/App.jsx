@@ -5,7 +5,7 @@ import {PlainBG,LeafyBG,LeafyBGLite} from "./components/Backgrounds";
 import { Outlet } from "react-router-dom";
 import Loading from "./pages/LoadingPage.jsx";
 import { Header,Footer } from "./components/index.js";
-import {ScrollManager} from "./utils";
+import {ScrollManager,ReactToaster} from "./utils";
 
 function App() {
   const [loading , setLoading] = useState(true);
@@ -60,6 +60,7 @@ function App() {
           <div className="min-h-screen flex flex-col">
             <Header />
             <main className="flex-1">
+              <ReactToaster/>
               <Outlet/>
             </main>
             <Footer />

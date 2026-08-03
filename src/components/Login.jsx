@@ -5,6 +5,7 @@ import {CommonButton, CommonInput} from "../components/Common"
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 import { AlertCircle } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 
 function Login() {
@@ -22,7 +23,17 @@ function Login() {
         setLoading(true);
         setError("");
         try {
-            const session = await authService.login(data);
+            const session = await toast.promise(
+                authService.login(data),
+                {
+                    loading: "Logging in...",
+                    success: "Welcome back!",
+                    error: (err) =>
+                        err.code === 401
+                            ? "Invalid email or password."
+                            : "Unable to sign in. Please try again.",
+                }
+            );
             if( session ){
                 const userData = await authService.getCurrentUser();
                 if (userData) auth.login(userData);

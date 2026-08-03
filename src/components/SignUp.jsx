@@ -5,6 +5,7 @@ import {CommonButton, CommonInput} from "../components/Common"
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 import { AlertCircle } from "lucide-react";
+import toast from "react-hot-toast";
 
 
 function SignUp() {
@@ -23,7 +24,17 @@ function SignUp() {
         setLoading(true);
         setError("");
         try {
-            const session = await authService.createAccount(data);
+            const session = await toast.promise(
+                authService.createAccount(data),
+                {
+                    loading: "Creating your nest...",
+                    success: "Account created successfully!",
+                    error: (err) =>
+                        err.code === 409
+                            ? "An account with this email already exists."
+                            : "Unable to create your account. Please try again.",
+                }
+            );
             if( session ){
                 const userData = await authService.getCurrentUser();
                 if (userData) auth.login(userData);
