@@ -14,7 +14,7 @@ import ErrorPage from './pages/ErrorPage.jsx';
 import {PublicRoute,ProtectedRoute} from './utils';
 import SignUpPage from './pages/SignUpPage.jsx';
 import TestPage from './pages/TestPage.jsx';
-import PostForm from './components/General/PostForm/PostForm.jsx';
+import PostForm from './components/PostForm/PostForm.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App/>} errorElement={<ErrorPage />}>

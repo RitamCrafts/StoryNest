@@ -1,5 +1,6 @@
 import { Controller } from "react-hook-form";
 import { Editor } from "@tinymce/tinymce-react";
+import "../../styles/tinymce.css";
 
 export default function RTE({
     name = "content",
@@ -15,7 +16,7 @@ export default function RTE({
                 </label>
             )}
 
-            <div className="overflow-hidden rounded-2xl border border-green-200 bg-white shadow-sm">
+            <div className="overflow-hidden">
                 <Controller
                     name={name}
                     control={control}
@@ -27,11 +28,12 @@ export default function RTE({
                             value={value}
                             onEditorChange={onChange}
                             init={{
-                                height: 400,
+                                height: 450,
                                 menubar: true,
                                 branding: false,
                                 promotion: false,
-                                resize: false,
+                                resize: true,
+                                min_height: 315,
 
                                 toolbar_mode: "scrolling",
 
@@ -65,8 +67,8 @@ export default function RTE({
                                     body{
                                         font-family:Inter,sans-serif;
                                         font-size:16px;
-                                        line-height:1.8;
-                                        padding:18px;
+                                        line-height:0.4;
+                                        padding:3px;
                                     }
 
                                     h1{

@@ -6,6 +6,8 @@ function CommonInput({
   label,
   type = "text",
   className = "",
+  inputClassName = "",
+  labelClassName = "mb-1 block text-sm font-medium text-gray-800",
   ref,
   ...props
 }) {
@@ -13,7 +15,7 @@ function CommonInput({
   const [passwordShow,setPasswordShow] = useState(false);
   return (
     <div className={`w-full ${className}`}>
-      <label className="mb-1 block text-sm font-medium text-gray-800 select-none" htmlFor={inputId}>
+      <label className={`${labelClassName} select-none`} htmlFor={inputId}>
         {label}
       </label>
       <div className="text-box-wrapper relative">
@@ -39,6 +41,7 @@ function CommonInput({
 
             focus:border-green-600
             focus:outline-none
+            ${inputClassName}
           `}
           {...props}
         />

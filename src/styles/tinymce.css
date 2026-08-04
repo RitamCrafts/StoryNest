@@ -1,0 +1,5 @@
+/* Replace TinyMCE's default blue focus outline */
+.tox .tox-edit-area::before {
+    border: 2px solid #a7ffc7 !important;
+    box-shadow: none !important;
+}

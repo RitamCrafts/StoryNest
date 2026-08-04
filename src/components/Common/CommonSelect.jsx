@@ -27,7 +27,7 @@ function CommonSelect(
         <select
           id={id}
           ref={ref}
-          className="
+          className={`
             peer
             w-full
             appearance-none
@@ -52,7 +52,7 @@ function CommonSelect(
             focus:outline-none
             focus:ring-2
             focus:ring-green-100
-          "
+          `}
           {...props}
         >
           {options.map((option) => (
