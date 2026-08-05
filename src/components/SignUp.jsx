@@ -36,9 +36,24 @@ function SignUp() {
                 }
             );
             if( session ){
-                const userData = await authService.getCurrentUser();
-                if (userData) auth.login(userData);
-                navigate(redirectTo, { replace: true });
+                try {
+                    const userData = await authService.getCurrentUser();
+                    if (userData) {
+                        auth.login(userData);
+                        navigate(redirectTo, { replace: true });
+                    } else {
+                        throw new Error("Unable to retrieve user data.");
+                    }
+                } catch (profileErr) {
+                    console.error("Post-signup setup failed:", profileErr);
+                    try {
+                        await authService.logout();
+                    } finally {
+                        window.location.href = "/login";
+                    }
+                }
+            } else {
+                throw new Error("Account creation did not return a valid session.");
             }
         } catch (err) {
             if (err.code === 409) {

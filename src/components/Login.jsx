@@ -34,10 +34,26 @@ function Login() {
                             : "Unable to sign in. Please try again.",
                 }
             );
+
             if( session ){
-                const userData = await authService.getCurrentUser();
-                if (userData) auth.login(userData);
-                navigate(redirectTo, { replace: true });
+                try {
+                    const userData = await authService.getCurrentUser();
+                    if (userData) {
+                        auth.login(userData);
+                        navigate(redirectTo, { replace: true });
+                    } else {
+                        throw new Error("Failed to load user profile.");     
+                    }
+                } catch (profileErr) {
+                    console.error("Post-login setup failed:", profileErr);
+                    try {
+                        await authService.logout();
+                    } finally {
+                        window.location.href = "/login";
+                    }
+                }
+            } else {
+                throw new Error("Login did not return a valid session.");
             }
         } catch (err) {
             if (err.code === 401) {
@@ -74,7 +90,11 @@ function Login() {
                         pattern: {
                             value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
                             message: "Please enter a valid email address",
-                        }
+                        },
+                        validate: {
+                            noSpaces: (value) =>
+                                !/\s/.test(value) || "Email cannot contain spaces",
+                        },
                     })}/>
                     {errors.email && (
                         <p className="text-sm text-red-600">

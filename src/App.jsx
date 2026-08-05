@@ -2,14 +2,15 @@ import React, { useEffect, useState } from "react";
 import { useAuthContext } from "./context/AuthContext";
 import authService from "./appwrite/auth.js";
 import {PlainBG,LeafyBG,LeafyBGLite} from "./components/Backgrounds";
-import { Outlet } from "react-router-dom";
-import Loading from "./pages/LoadingPage.jsx";
+import { Outlet, useLocation } from "react-router-dom";
+import FullScreenLoading from "./pages/FullScreenLoading.jsx";
 import { Header,Footer } from "./components/index.js";
 import {ScrollManager,ReactToaster} from "./utils";
 
 function App() {
   const [loading , setLoading] = useState(true);
   const authContext = useAuthContext();
+  const location = useLocation();
   const liteBackgroundRoutes = [
     "/",
     "/discover",
@@ -28,22 +29,24 @@ function App() {
 
   useEffect(()=>{
     authService.getCurrentUser()
-    .then((userData)=>{
-      if(userData){
-        authContext.login(userData);
-      }
-      else {
+      .then((userData)=>{
+        if (userData) {
+          authContext.login(userData);
+        } else {
+          authContext.logout();
+        }
+      })
+      .catch(()=>{
         authContext.logout();
-      }
-    })
-    .finally(()=>{setLoading(false)})
+      })
+      .finally(()=>{setLoading(false)});
 
   },[]);
   
   if(loading)
     return(
       <>
-        <Loading/>
+        <FullScreenLoading/>
         <LeafyBG/>
       </>
     )

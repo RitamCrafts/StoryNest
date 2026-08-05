@@ -10,6 +10,7 @@ export class AuthService {
         .setProject(conf.appWriteProjectID)
         this.account = new Account(this.client);
     }
+
     async createAccount({email,password,name}){
         try {
             const userAccount = await this.account.create({
@@ -18,12 +19,7 @@ export class AuthService {
                 password: password,
                 name: name
             });
-            if(userAccount){
-                return this.login({email,password});
-            }
-            else{
-                return userAccount;
-            }
+            return await this.login({email,password});
         } catch (error) {
             console.log("AppWrite Error :: Error creating account :: ",error);
             throw error;
@@ -36,7 +32,6 @@ export class AuthService {
                 email: email,
                 password: password
             });
-
         } catch (error) {
             console.log("AppWrite Error :: Error logging in :: ",error);
             throw error;
@@ -47,16 +42,17 @@ export class AuthService {
         try {
             return await this.account.get();
         } catch (error) {
-            console.log("Appwrite Error :: getCurrentUserError :: ",error)
+            console.log("Appwrite Error :: getCurrentUserError :: ",error);
+            throw error;
         }
-        return null;
     }
 
     async logout(){
         try {
             await this.account.deleteSessions();
         } catch (error) {
-            console.log("Appwrite Error :: Error LOGGING OUT :: ",error);            
+            console.log("Appwrite Error :: Error LOGGING OUT :: ",error);
+            throw error;
         }
     }
 }

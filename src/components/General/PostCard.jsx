@@ -1,10 +1,18 @@
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import appwriteService from "../../appwrite/config";
 
 function PostCard({ $id, title, featuredImage }) {
+    const featuredImageFile = null;
+    try {
+        featuredImageFile = appwriteService.getFileView(featuredImage);
+    } catch (error) {
+        console.error(`Error loading featured image view for post ${id} :: `,error);
+        throw error;
+    }
     return (
         <Link
-            to={`/story/id=${$id}`}
+            to={`/story/${$id}`}
             className="
                 group
                 flex
@@ -38,8 +46,9 @@ function PostCard({ $id, title, featuredImage }) {
             "
             >
                 <img
-                    src={featuredImage}
+                    src={featuredImageFile}
                     alt={title}
+                    loading="lazy"
                     className="
                         h-full
                         w-full

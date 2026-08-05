@@ -32,7 +32,8 @@ export class Service{
                 },
             })
         } catch (error) {
-            console.log("Appwrite Error :: Error in creating Post :: ",error);  
+            console.log("Appwrite Error :: Error in creating Post :: ",error);
+            throw error;
         }
     }
 
@@ -52,7 +53,8 @@ export class Service{
             })
             
         } catch (error) {
-            console.log("Appwrite Error :: Error in updating Post :: ",error);  
+            console.log("Appwrite Error :: Error in updating Post :: ",error);
+            throw error;
         }
     }
 
@@ -64,10 +66,9 @@ export class Service{
                 documentId: slug,
             })
             return true;
- 
         } catch (error) {
-            console.log("Appwrite Error :: Error in deleting Post :: ",error); 
-            return false;
+            console.log("Appwrite Error :: Error in deleting Post :: ",error);
+            throw error;
         }
     }
 
@@ -79,22 +80,21 @@ export class Service{
                 documentId: slug,
             });
         } catch (error) {
-            console.log("Appwrite Error :: Error in fetching Post :: ",error); 
-            return false;
+            console.log("Appwrite Error :: Error in fetching Post :: ",error);
+            throw error;
         }
     }
 
-    async getPosts(queries = [Query.equal("status", ["active"])]){
+    async getPosts(queries = [Query.equal("status", ["Public"])]){
         try {
-            return await databases.listDocuments({
+            return await this.databases.listDocuments({
                 databaseId: conf.appWriteDatabaseID,
                 collectionId: conf.appwriteCollectionID,
                 queries: queries
             })
-
         } catch (error) {
             console.log("Appwrite Error :: Error in fetching all posts :: ",error); 
-            return false;
+            throw error;
         }
     }
 
@@ -109,10 +109,9 @@ export class Service{
                 fileId: ID.unique(),
                 file: file,
             });//returns file ID
-
         } catch (error) {
             console.log("Appwrite Error :: Error uploading file(s) :: ",error); 
-            return false;
+            throw error;
         }
     }
 
@@ -125,7 +124,7 @@ export class Service{
             return true;
         } catch (error) {
             console.log("Appwrite Error :: Error deleting file(s) :: ",error); 
-            return false;
+            throw error;
         }
     }
 
@@ -137,7 +136,19 @@ export class Service{
             });
         } catch (error) {
             console.log("Appwrite Error :: Error getFilePreview :: ",error); 
-            return false;
+            throw error;
+        }
+    }
+
+    getFileView(fileId) {
+        try {
+            return this.bucket.getFileView({
+                bucketId: conf.appwriteBucketID,
+                fileId,
+            });
+        } catch (error) {
+            console.log("Appwrite Error :: Error getFileView :: ", error);
+            throw error;
         }
     }
 

@@ -11,10 +11,12 @@ import LoginPage from './pages/LoginPage.jsx';
 import DiscoverPage from './pages/DiscoverPage.jsx';
 import ErrorPage from './pages/ErrorPage.jsx';
 
-import {PublicRoute,ProtectedRoute} from './utils';
+import {PublicRoute,ProtectedRoute, BannedRoute} from './utils';
 import SignUpPage from './pages/SignUpPage.jsx';
 import TestPage from './pages/TestPage.jsx';
-import PostForm from './components/PostForm/PostForm.jsx';
+import WritePage from './pages/WritePage.jsx';
+import EditPage from './pages/EditPage.jsx';
+import StoryPage from './pages/StoryPage.jsx';
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path='/' element={<App/>} errorElement={<ErrorPage />}>
@@ -23,7 +25,9 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route index element={<HomePage/>}/>
         <Route path='/home' element={<HomePage/>}/>
         <Route path='/discover' element={<DiscoverPage/>}/>
-        <Route path='/write' element={<PostForm/>}/>
+        <Route path='/write' element={<WritePage/>}/>
+        <Route path='/edit/:postId' element={<EditPage/>}/>
+        <Route path='/story/:postId' element={<StoryPage/>}/>
     </Route>
 
     <Route element={<PublicRoute/>}>
@@ -31,6 +35,11 @@ const router = createBrowserRouter(createRoutesFromElements(
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/signup' element={<SignUpPage/>}/>
         <Route path='/test-page' element={<TestPage/>}/>
+    </Route>
+
+    <Route element={<BannedRoute/>}>
+      <Route path='/edit' element={<EditPage/>}/>
+      <Route path='/story' element={<WritePage/>}/>
     </Route>
 
   </Route>
