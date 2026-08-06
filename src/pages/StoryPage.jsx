@@ -288,7 +288,7 @@ export default function StoryPage() {
 
                                 <div>
                                     <p className="font-semibold text-gray-900">
-                                        {author?.name || "Author"}
+                                        {author?.name || "Anonymous"}
                                     </p>
 
                                     <p className="text-sm text-gray-500">
@@ -328,8 +328,7 @@ export default function StoryPage() {
 
                         <article
                             className="
-                                prose
-                                prose-lg
+                                story-content
                                 max-w-none
 
                                 prose-headings:font-bold

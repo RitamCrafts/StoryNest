@@ -1,1 +1,22 @@
-@import "tailwindcss"
+@import "tailwindcss";
+.story-content h1 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+}
+
+.story-content h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin: 1.25rem 0 0.75rem;
+}
+
+.story-content h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem;
+}
+
+.story-content p {
+  line-height: 1.8;
+}

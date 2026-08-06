@@ -67,7 +67,7 @@ export default function RTE({
                                     body{
                                         font-family:Inter,sans-serif;
                                         font-size:16px;
-                                        line-height:0.4;
+                                        line-height:1.2;
                                         padding:3px;
                                     }
 
