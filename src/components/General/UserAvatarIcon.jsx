@@ -1,3 +1,4 @@
+import React from "react";
 export default function UserAvatarIcon({
   size = 42,
   className = "",

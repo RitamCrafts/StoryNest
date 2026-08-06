@@ -38,8 +38,8 @@ const router = createBrowserRouter(createRoutesFromElements(
     </Route>
 
     <Route element={<BannedRoute/>}>
-      <Route path='/edit' element={<EditPage/>}/>
-      <Route path='/story' element={<WritePage/>}/>
+      <Route path='/edit'/>
+      <Route path='/story'/>
     </Route>
 
   </Route>

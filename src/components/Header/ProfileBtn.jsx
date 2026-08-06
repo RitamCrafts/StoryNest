@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import UserAvatarIcon from "./UserAvatarIcon";
+import UserAvatarIcon from "../General/UserAvatarIcon";
 import ProfileDropdown from "./ProfileDropdown";
 
 function ProfileBtn() {

@@ -1,7 +1,7 @@
-import { X } from "lucide-react";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
+
 import CommonBox from "./CommonBox";
-import CommonIconButton from "./CommonIconButton";
 
 export default function CommonPopup({
   isOpen,
@@ -9,15 +9,16 @@ export default function CommonPopup({
   children,
   className = "",
   padding = "p-3",
-  showCloseButton = true,
   closeOnOverlay = true,
   closeOnEsc = true,
 }) {
   useEffect(() => {
-    if (!isOpen || !closeOnEsc) return;
+    if (!isOpen) return;
 
     const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
+      if (closeOnEsc && e.key === "Escape") {
+        onClose();
+      }
     };
 
     document.addEventListener("keydown", handleKeyDown);
@@ -31,11 +32,15 @@ export default function CommonPopup({
 
   if (!isOpen) return null;
 
-  return (
+  return createPortal(
     <div
       className="
-        fixed inset-0 z-[9999]
-        flex items-center justify-center
+        fixed
+        inset-0
+        z-[9999]
+        flex
+        items-center
+        justify-center
         bg-green-950/35
         backdrop-blur-sm
         p-6
@@ -58,23 +63,9 @@ export default function CommonPopup({
         `}
         onClick={(e) => e.stopPropagation()}
       >
-        {showCloseButton && (
-          <CommonIconButton
-            onClick={onClose}
-            className="
-              absolute
-              -top-3
-              -right-3
-              z-20
-              shadow-lg
-            "
-          >
-            <X size={18} />
-          </CommonIconButton>
-        )}
-
         {children}
       </CommonBox>
-    </div>
+    </div>,
+    document.body
   );
 }

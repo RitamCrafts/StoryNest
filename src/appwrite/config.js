@@ -21,7 +21,7 @@ export class Service{
         try {
             return await this.databases.createDocument({
                 databaseId: conf.appWriteDatabaseID,
-                collectionId: conf.appwriteCollectionID,
+                collectionId: conf.appwritePostsCollectionID,
                 documentId: slug,
                 data: {
                     "title": title,
@@ -41,7 +41,7 @@ export class Service{
         try {
             return await this.databases.updateDocument({
                 databaseId: conf.appWriteDatabaseID,
-                collectionId: conf.appwriteCollectionID,
+                collectionId: conf.appwritePostsCollectionID,
                 documentId: slug,
                 data: {
                     "title": title,
@@ -62,7 +62,7 @@ export class Service{
         try {
             await this.databases.deleteDocument({
                 databaseId: conf.appWriteDatabaseID,
-                collectionId: conf.appwriteCollectionID,
+                collectionId: conf.appwritePostsCollectionID,
                 documentId: slug,
             })
             return true;
@@ -76,7 +76,7 @@ export class Service{
         try {
             return await this.databases.getDocument({
                 databaseId: conf.appWriteDatabaseID,
-                collectionId: conf.appwriteCollectionID,
+                collectionId: conf.appwritePostsCollectionID,
                 documentId: slug,
             });
         } catch (error) {
@@ -89,7 +89,7 @@ export class Service{
         try {
             return await this.databases.listDocuments({
                 databaseId: conf.appWriteDatabaseID,
-                collectionId: conf.appwriteCollectionID,
+                collectionId: conf.appwritePostsCollectionID,
                 queries: queries
             })
         } catch (error) {

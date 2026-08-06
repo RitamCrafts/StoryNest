@@ -45,7 +45,7 @@ function EditPage() {
         };
 
         fetchPost();
-    }, [postId, navigate]);
+    }, [postId, navigate, authContext.userData]);
 
     if (!post) {
         return <div>

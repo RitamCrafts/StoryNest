@@ -31,8 +31,6 @@ function UploadImage({
     setSelectedFile(null);
   }, [existingImage]);
 
-  console.log(typeof preview);
-  console.log(preview);
 
   const sizeClasses = `
     ${boxSize}

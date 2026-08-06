@@ -1,6 +1,6 @@
 import React from "react";
 import { X } from "lucide-react";
-import UserAvatarIcon from "./UserAvatarIcon";
+import UserAvatarIcon from "../General/UserAvatarIcon";
 import LogoutBtn from "./LogoutBtn";
 import { useAuthContext } from "../../context/AuthContext";
 
