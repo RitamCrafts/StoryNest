@@ -21,7 +21,7 @@ export default function StoryPage() {
 
     const [featuredImageSrc, setFeaturedImageSrc] = useState(PLACEHOLDER_IMAGE);
 
-    const [author, setAuthor] = useState(null); // TODO
+    const [author, setAuthor] = useState(null); 
     const [post, setPost] = useState(null);
 
     const [userIsAuthor, setUserIsAuthor] = useState(false);
@@ -127,6 +127,19 @@ export default function StoryPage() {
                 setPost(fetchedPost);
 
                 try {
+                    const authorProfile = await appwriteService.getUserProfile(
+                        fetchedPost.userid
+                    );
+
+                    setAuthor(authorProfile);
+                } catch (err) {
+                    console.error("Unable to fetch author profile:", err);
+                    setAuthor({
+                        name: "Anonymous",
+                    });
+                }
+
+                try {
 
                     const imageUrl = appwriteService.getFileView(
                         fetchedPost.featuredimage
@@ -144,7 +157,6 @@ export default function StoryPage() {
 
                 }
 
-                // Fetch author information later
 
             } catch (error) {
 
@@ -261,9 +273,11 @@ export default function StoryPage() {
                         <h1
                             className="
                                 text-3xl
+                                md:text-4xl
                                 font-bold
                                 text-gray-900
-                                md:text-4xl
+                                leading-tight
+                                [overflow-wrap:anywhere]
                             "
                         >
                             {post.title}
@@ -275,19 +289,20 @@ export default function StoryPage() {
                                 flex
                                 flex-col
                                 gap-5
-                                flex-wrap
                                 md:flex-row
                                 md:items-center
-                                md:justify-between
                             "
                         >
-                            <div className="flex items-center gap-4">
-                                <div className="h-12 w-12 rounded-full">
+                            <div className="flex flex-1 min-w-0 items-center gap-4">
+                                <div className="h-12 w-12 shrink-0 rounded-full">
                                     <UserAvatarIcon />
                                 </div>
 
-                                <div>
-                                    <p className="font-semibold text-gray-900">
+                                <div className="min-w-0 flex-1">
+                                    <p
+                                        className="truncate font-semibold text-gray-900"
+                                        title={author?.name || "Anonymous"}
+                                    >
                                         {author?.name || "Anonymous"}
                                     </p>
 
@@ -296,6 +311,7 @@ export default function StoryPage() {
                                     </p>
                                 </div>
                             </div>
+
 
                             <div
                                 className="

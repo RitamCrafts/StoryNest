@@ -31,7 +31,7 @@ export default function ProfileDropdown({
         <UserAvatarIcon size={40} />
 
         <div className="min-w-0">
-          <h3 className="truncate text-sm font-semibold text-gray-800">
+          <h3 className="truncate text-sm font-semibold text-gray-800 pr-4">
             {user?.name}
           </h3>
 

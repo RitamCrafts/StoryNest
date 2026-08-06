@@ -148,7 +148,8 @@ function PostForm({post}) {
             .replace(/\s+/g, "-")
             .replace(/[^\w-]+/g, "")
             .replace(/--+/g, "-")
-            .replace(/^-+|-+$/g, "");
+            .replace(/^-+|-+$/g, "")
+            .slice(0, 36);
     }, []);
 
   useEffect(() => {
@@ -202,7 +203,7 @@ function PostForm({post}) {
                               message: "Title must be at least 5 characters",
                             },
                             maxLength: {
-                              value: 120,
+                              value: 100,
                               message: "Title is too long",
                             },
                           })}
@@ -224,6 +225,10 @@ function PostForm({post}) {
                           placeholder="your-story-id"
                           {...register("slug", {
                             required: "Story ID is required",
+                            maxLength: {
+                              value: 36,
+                              message: "Story ID cannot exceed 36 characters",
+                            },
                             pattern: {
                               value: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
                               message:

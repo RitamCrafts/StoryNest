@@ -5,38 +5,36 @@ import QuoteBox from "../components/Home/QuoteBox";
 import testImage from "../assets/testImage.jpeg"
 import UserPostsHeader from "../components/Home/UserPostsHeader.jsx";
 import PostCardGrid from "../components/General/PostCardGrid.jsx";
+import { Query } from "appwrite";
+import appwriteService from "../appwrite/config.js";
+import { useState,useEffect } from "react";
 
 
 function HomePage() {
     const auth = useAuthContext();
-    const posts = [];
-    const testPosts = [
-        {
-            $id:"323d",
-            featuredImage:testImage,
-            title:"Hello World"
-        },
-        {
-            $id:"323d",
-            featuredImage:testImage,
-            title:"Hello World"
-        },
-        {
-            $id:"323d",
-            featuredImage:testImage,
-            title:"Hello World"
-        },
-        {
-            $id:"323d",
-            featuredImage:testImage,
-            title:"Hello World"
-        },
-        {
-            $id:"323d",
-            featuredImage:testImage,
-            title:"Hello World"
-        }
-    ]
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+        if (!auth.userData) return;
+
+        const fetchPosts = async () => {
+            try {
+                const result = await appwriteService.getPosts([
+                    Query.equal("userid", auth.userData.$id),
+                    Query.orderDesc("$createdAt"),
+                ]);
+
+                setPosts(result.documents);
+            } catch (error) {
+                console.error(error);
+                toast.error("Error fetching posts.");
+            }
+        };
+
+        fetchPosts();
+    }, [auth.userData]);
+    
     return (
         <div className="mx-auto w-full max-w-[1400px] lg:px-20 md:px-13 sm:px-8 px-5 py-5">
 
@@ -47,7 +45,12 @@ function HomePage() {
             </section>
 
             {/*Post Grid*/}
-            {(posts.length>0) && <UserPostsHeader margin="mb-6 md:mb-9 lg:-ml-4"/>}
+            {(posts.length>0) && 
+                <>
+                    <UserPostsHeader margin="mb-6 md:mb-9 lg:-ml-4"/>
+                    <PostCardGrid posts={posts} />
+                </>
+            }
 
         </div>
     );

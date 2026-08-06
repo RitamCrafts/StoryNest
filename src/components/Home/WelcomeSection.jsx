@@ -11,19 +11,24 @@ function WelcomeSection({ name = "Writer" }) {
         <section className="flex lg:h-50 flex-col justify-center">
             
             <h1 className="text-4xl font-bold tracking-tight leading-none text-gray-900 flex sm:flex-row flex-col flex-wrap gap-x-3 gap-y-2 mr-7">
-                <span> 
-                    Welcome back,
-                </span>
-                <div className="flex flex-row gap-2">
-                    <span className="text-green-700">
-                        {firstName}
-                    </span>
+                <span>Welcome back,</span>
+                    
+                <span
+                    className="
+                    text-green-700
+                    break-all
+                    overflow-hidden
+                    "
+                >
+                    {firstName}
                     <Leaf
-                        size={30}
+                        size={28}
                         strokeWidth={2.5}
-                        className="text-green-600 translate-y-1 pl-1"
+                        className="inline-block ml-2 text-green-600 align-baseline"
                     />
-                </div>
+                </span>
+
+                
             </h1>
 
             
