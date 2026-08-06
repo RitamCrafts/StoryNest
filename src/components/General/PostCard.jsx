@@ -1,4 +1,4 @@
-import { ArrowRight, UserCircle2 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import appwriteService from "../../appwrite/config";
 import { useMemo, useState } from "react";
@@ -59,7 +59,7 @@ function PostCard({
                 "
             >
                 {!loaded && (
-                    <div className="absolute inset-0 animate-pulse bg-gray-200" />
+                    <div className="absolute inset-0 animate-pulse [animation-duration:1500ms] bg-green-100" />
                 )}
 
                 <img
@@ -81,46 +81,45 @@ function PostCard({
             </div>
 
             {/* Content */}
-            <div
-                className="
-                    flex
-                    min-w-0
-                    flex-1
-                    items-start
-                    justify-between
-                    p-5
-                "
-            >
-                <div className="min-w-0 flex-1">
+            <div className="flex flex-1 min-w-0 p-5">
+                {/* Text */}
+                <div className="min-w-0 flex-1 flex flex-col justify-center">
                     <h3
+                        title={title}
                         className="
                             truncate
                             text-lg
+                            sm:text-xl
                             font-semibold
                             text-gray-900
                             transition-colors
                             group-hover:text-green-700
-                            sm:text-xl
                         "
-                        title={title}
                     >
                         {title}
                     </h3>
 
                     {author && (
-                        <div className="mt-1 flex items-center gap-2 min-w-0 -mb-3">
-                            <span className="truncate text-sm text-gray-500">
-                                by {author}
-                            </span>
-                        </div>
+                        <p
+                            title={author}
+                            className="
+                                mt-1
+                                truncate
+                                text-sm
+                                text-gray-500
+                            "
+                        >
+                            by {author}
+                        </p>
                     )}
 
-                    <p className={`mt-3 text-sm text-gray-500`}>
+                    <p className="mt-1 text-sm text-gray-500">
                         Updated {getRelativeTime($updatedAt)} ago
                     </p>
                 </div>
 
-                <div className="ml-4 flex shrink-0 items-end">
+                {/* Arrow */}
+                <div className="ml-4 flex shrink-0 items-center">
                     <ArrowRight
                         size={24}
                         className="
