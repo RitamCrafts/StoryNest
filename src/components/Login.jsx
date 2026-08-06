@@ -3,6 +3,7 @@ import { useAuthContext } from "../context/AuthContext";
 import { Link,Navigate,useNavigate,useLocation } from "react-router-dom";
 import {CommonButton, CommonInput} from "../components/Common"
 import authService from "../appwrite/auth";
+import appwriteService from "../appwrite/config";
 import { useForm } from "react-hook-form";
 import { AlertCircle } from "lucide-react";
 import { toast } from "react-hot-toast";
@@ -35,23 +36,37 @@ function Login() {
                 }
             );
 
-            if( session ){
+            if (session) {
+                const userData = await authService.getCurrentUser();
+
+                if (!userData) {
+                    throw new Error("Failed to load user.");
+                }
+
                 try {
-                    const userData = await authService.getCurrentUser();
-                    if (userData) {
-                        auth.login(userData);
-                        navigate(redirectTo, { replace: true });
+                    await appwriteService.getUserProfile(userData.$id);
+                } catch (err) {
+                    if (err?.code === 404) {
+                        try {
+                            await appwriteService.createUserProfile({
+                                userId: userData.$id,
+                                email: userData.email,
+                                name: userData.name,
+                            });
+                        } catch (createErr) {
+                            console.error("Unable to create missing profile:", createErr);
+
+                            toast.error(
+                                "Profile couldn't be initialized. Some places may display 'Anonymous'."
+                            );
+                        }
                     } else {
-                        throw new Error("Failed to load user profile.");     
-                    }
-                } catch (profileErr) {
-                    console.error("Post-login setup failed:", profileErr);
-                    try {
-                        await authService.logout();
-                    } finally {
-                        window.location.href = "/login";
+                        console.error("Error fetching profile:", err);
                     }
                 }
+
+                auth.login(userData);
+                navigate(redirectTo, { replace: true });
             } else {
                 throw new Error("Login did not return a valid session.");
             }

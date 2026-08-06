@@ -3,6 +3,7 @@ import { useAuthContext } from "../context/AuthContext";
 import { Link,Navigate,useNavigate,useLocation } from "react-router-dom";
 import {CommonButton, CommonInput} from "../components/Common"
 import authService from "../appwrite/auth";
+import appwriteService from "../appwrite/config";
 import { useForm } from "react-hook-form";
 import { AlertCircle } from "lucide-react";
 import toast from "react-hot-toast";
@@ -38,12 +39,25 @@ function SignUp() {
             if( session ){
                 try {
                     const userData = await authService.getCurrentUser();
-                    if (userData) {
-                        auth.login(userData);
-                        navigate(redirectTo, { replace: true });
-                    } else {
+                    if (!userData) {
                         throw new Error("Unable to retrieve user data.");
+                    } 
+
+                    try {
+                        await appwriteService.createUserProfile({
+                            userId: userData.$id,
+                            email: userData.email,
+                            name: userData.name,
+                        });
+                    } catch (error) {
+                        toast.error("Error creating user profile.");
+                        console.error("Error creating user profile. If this issue persists, try contacting support.")
                     }
+
+
+                    auth.login(userData);
+                    navigate(redirectTo, { replace: true });
+
                 } catch (profileErr) {
                     console.error("Post-signup setup failed:", profileErr);
                     try {
