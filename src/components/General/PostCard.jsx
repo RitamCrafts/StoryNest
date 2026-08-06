@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import appwriteService from "../../appwrite/config";
 
 function PostCard({ $id, title, featuredImage }) {
-    const featuredImageFile = null;
+    let featuredImageFile = null;
     try {
         featuredImageFile = appwriteService.getFileView(featuredImage);
     } catch (error) {
