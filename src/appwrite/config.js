@@ -152,6 +152,86 @@ export class Service{
         }
     }
 
+
+    // ---------- user profile service ------------
+
+    async createUserProfile({userId, email, name}){
+        try {
+            return await this.databases.createDocument({
+                databaseId: conf.appWriteDatabaseID,
+                collectionId: conf.appwriteUsersCollectionID,
+                documentId: userId,
+                data: {
+                    name: name,
+                    email: email,
+                },
+            })
+        } catch (error) {
+            console.log("Appwrite Error :: Error in creating User Profile :: ",error);
+            throw error;
+        }
+    }
+
+    async updateUserProfile(userId, {email, name}){
+        try {
+            return await this.databases.updateDocument({
+                databaseId: conf.appWriteDatabaseID,
+                collectionId: conf.appwriteUsersCollectionID,
+                documentId: userId,
+                data: {
+                    name: name,
+                    email: email,
+                },
+            })
+            
+        } catch (error) {
+            console.log("Appwrite Error :: Error in updating User Profile :: ",error);
+            throw error;
+        }
+    }
+
+    async deleteUserProfile(userId){
+        try {
+            await this.databases.deleteDocument({
+                databaseId: conf.appWriteDatabaseID,
+                collectionId: conf.appwriteUsersCollectionID,
+                documentId: userId,
+            })
+            return true;
+        } catch (error) {
+            console.log("Appwrite Error :: Error in deleting User Profile :: ",error);
+            throw error;
+        }
+    }
+
+    async getUserProfile(userId){
+        try {
+            return await this.databases.getDocument({
+                databaseId: conf.appWriteDatabaseID,
+                collectionId: conf.appwriteUsersCollectionID,
+                documentId: userId,
+            });
+        } catch (error) {
+            console.log(`Appwrite Error :: Error in fetching User ${userId} Profile :: `,error);
+            throw error;
+        }
+    }
+
+    async getUserProfiles(queries = []){
+        try {
+            return await this.databases.listDocuments({
+                databaseId: conf.appWriteDatabaseID,
+                collectionId: conf.appwriteUsersCollectionID,
+                queries: queries
+            })
+        } catch (error) {
+            console.log("Appwrite Error :: Error in fetching user profiles :: ",error); 
+            throw error;
+        }
+    }
+
+
+
 }
 
 const appwriteService = new Service();
