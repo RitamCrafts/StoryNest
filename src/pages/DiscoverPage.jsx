@@ -2,11 +2,13 @@ import { Compass, Leaf } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Query } from "appwrite";
 import appwriteService from "../appwrite/config";
+import LoadingPage from "./LoadingPage";
 
 import PostCardGrid from "../components/General/PostCardGrid";
 
 function DiscoverPage() {
     const [posts, setPosts] = useState([]);
+    const [loading,setLoading] = useState(true);
 
     useEffect(() => {
         const fetchPosts = async () => {
@@ -45,11 +47,19 @@ function DiscoverPage() {
                 setPosts(postsWithAuthors);
             } catch (error) {
                 console.error(error);
+            } finally {
+                setLoading(false);
             }
         };
 
         fetchPosts();
     }, []);
+
+    if(loading){
+        return(
+            <LoadingPage/>
+        )
+    }
 
     return (
         <div className="mx-auto w-full max-w-[1400px] px-4 sm:px-8 md:px-10 lg:px-20 py-5">

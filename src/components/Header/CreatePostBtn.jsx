@@ -6,7 +6,7 @@ function CreatePostBtn() {
   const navigate = useNavigate();
   return (
     <button
-            title="Create Post"
+            title="New Story"
             className="rounded-full cursor-pointer p-2.5 text-green-700 transition hover:bg-green-100 hover:scale-105"
             onClick={()=>(navigate("/write"))}
           >
