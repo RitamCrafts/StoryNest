@@ -1,4 +1,4 @@
-import { Client, ID, Databases, Storage, Query} from "appwrite";
+import { Client, ID, Databases, Storage, Query, Permission, Role } from "appwrite";
 import conf from "../config/conf.js";
 
 export class Service{
@@ -19,6 +19,19 @@ export class Service{
 
     async createPost({title, slug, content, featuredImage, status, userId}){
         try {
+            const permissions =
+                status === "Public"
+                    ? [
+                        Permission.read(Role.users()),
+                        Permission.read(Role.user(userId)),
+                        Permission.update(Role.user(userId)),
+                        Permission.delete(Role.user(userId)),
+                    ]
+                    : [
+                        Permission.read(Role.user(userId)),
+                        Permission.update(Role.user(userId)),
+                        Permission.delete(Role.user(userId)),
+                    ];
             return await this.databases.createDocument({
                 databaseId: conf.appWriteDatabaseID,
                 collectionId: conf.appwritePostsCollectionID,
@@ -30,6 +43,7 @@ export class Service{
                     "userid": userId,
                     "featuredimage": featuredImage
                 },
+                permissions: permissions,
             })
         } catch (error) {
             console.log("Appwrite Error :: Error in creating Post :: ",error);
@@ -39,6 +53,19 @@ export class Service{
 
     async updatePost(slug, {title, content, featuredImage, status, userId}){
         try {
+            const permissions =
+                status === "Public"
+                    ? [
+                        Permission.read(Role.users()),
+                        Permission.read(Role.user(userId)),
+                        Permission.update(Role.user(userId)),
+                        Permission.delete(Role.user(userId)),
+                    ]
+                    : [
+                        Permission.read(Role.user(userId)),
+                        Permission.update(Role.user(userId)),
+                        Permission.delete(Role.user(userId)),
+                    ];
             return await this.databases.updateDocument({
                 databaseId: conf.appWriteDatabaseID,
                 collectionId: conf.appwritePostsCollectionID,
@@ -49,7 +76,8 @@ export class Service{
                     "status": status,
                     "userid": userId,
                     "featuredimage": featuredImage
-                }
+                },
+                permissions: permissions,
             })
             
         } catch (error) {
@@ -165,6 +193,10 @@ export class Service{
                     name: name,
                     email: email,
                 },
+                permissions: [
+                    Permission.update(Role.user(userId)),
+                    Permission.delete(Role.user(userId)),
+                ],
             })
         } catch (error) {
             console.log("Appwrite Error :: Error in creating User Profile :: ",error);
@@ -182,6 +214,10 @@ export class Service{
                     name: name,
                     email: email,
                 },
+                permissions: [
+                    Permission.update(Role.user(userId)),
+                    Permission.delete(Role.user(userId)),
+                ],
             })
             
         } catch (error) {

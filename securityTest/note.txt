@@ -1,3 +1,5 @@
 As shown in ./log_1.png users can see private posts of other users(even delete/edit) and security is handelled very badly here.
 This is a major security issue as attackers can completely destroy the DB.
 The DB perms need to be revamped and changes to be made in FrontEnd accordingly with high priority.
+FIXED, now users select perms on creation / updations automatically which is controlled by the application.
+This does mean the previous data has no permission check, so it was fixed with a script.

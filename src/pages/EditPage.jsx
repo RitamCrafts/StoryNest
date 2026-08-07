@@ -25,20 +25,17 @@ function EditPage() {
                     throw error;
                 }
 
-                if (fetchedPost.userid !== authContext.userData.$id) {
-                    const error = new Error("Unauthorized");
-                    error.code = 403;
-                    throw error;
-                }
 
                 setPost(fetchedPost);
 
             } catch (error) {
                 console.error(error);
-                if (error.code === 403) {
+                if (error.code === 401) {
                     toast.error("You don't have permission to edit this story.");
+                } else if (error.code === 404) {
+                    toast.error("Story not found.");
                 } else {
-                    toast.error("Error finding your story.");
+                    toast.error("Something went wrong.");
                 }
                 navigate(`/story/${postId}`, { replace: true });
             }

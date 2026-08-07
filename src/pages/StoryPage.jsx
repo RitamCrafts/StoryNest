@@ -44,7 +44,7 @@ export default function StoryPage() {
         );
         if (!confirmed) return;
         try {
-            const deleted = await appwriteService.deletePost(post.$id);
+            const deleted = await appwriteService.deletePost(postId);
             if (!deleted) {
                 throw new Error("Delete failed.");
             }
@@ -122,9 +122,10 @@ export default function StoryPage() {
 
                 setUserIsAuthor(tempIsAuthor);
 
-                setCanSee(fetchedPost.status === "Public" || tempIsAuthor);
+                setCanSee(true); // if its a 401 its alr handelled by the error
                 
                 setPost(fetchedPost);
+
 
                 try {
                     const authorProfile = await appwriteService.getUserProfile(
@@ -162,12 +163,20 @@ export default function StoryPage() {
 
                 console.error(error);
 
-                if(error.code === 404) toast.error("Unable to find this story.");
-                else toast.error("Error finding this story.");
+                if (error.code === 401) {
+                    setCanSee(false);
+                    return;
+                }
 
-                navigate("/discover", {
-                    replace: true,
-                });
+                if (error.code === 404) {
+                    setCanSee(false);
+                    return;
+
+                } else {
+                    toast.error("Something went wrong.");
+                }
+
+                navigate("/discover", { replace: true });
 
             } finally {
 
@@ -190,12 +199,9 @@ export default function StoryPage() {
             <div className="max-w-lg mx-auto my-4 px-4">
                 <CommonBox className="text-center py-10">
                     <h2 className="text-2xl font-bold text-gray-800">
-                        This post is {post?.status ?? "Private"}.
+                        Story not found or you don't have permission to view it.
                     </h2>
 
-                    <p className="mt-3 text-gray-600">
-                        You don't have permission to view this story.
-                    </p>
 
                     <div className="mt-6">
                         <CommonButton
@@ -208,6 +214,9 @@ export default function StoryPage() {
             </div>
         );
     }
+
+    if (!post) return null;
+
     return (
         <section className="mx-auto w-full max-w-[1400px] xl:px-20 md:px-10 sm:px-8 px-5 py-5">
             <CommonBox
@@ -331,7 +340,7 @@ export default function StoryPage() {
                                     <CommonButton
                                         variant="primary"
                                         onClick={() =>
-                                            navigate(`/edit/${post.$id}`)
+                                            navigate(`/edit/${postId}`)
                                         }
                                     >
                                         Edit Story

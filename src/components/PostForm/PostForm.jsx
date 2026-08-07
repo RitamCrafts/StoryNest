@@ -59,6 +59,7 @@ function PostForm({post}) {
           title: data.title,
           content: data.content,
           status: data.status,
+          userId: post.userid,
           featuredImage: file ? file.$id : post.featuredimage,
         });
 
