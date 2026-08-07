@@ -1,0 +1,3 @@
+As shown in ./log_1.png users can see private posts of other users(even delete/edit) and security is handelled very badly here.
+This is a major security issue as attackers can completely destroy the DB.
+The DB perms need to be revamped and changes to be made in FrontEnd accordingly with high priority.
