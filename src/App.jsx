@@ -57,7 +57,7 @@ function App() {
       <>
         <div className="relative min-h-screen">
 
-
+          
           {useLiteBackground ? <LeafyBGLite /> : <LeafyBG />}
           <ScrollManager />
           <div className="min-h-screen flex flex-col">

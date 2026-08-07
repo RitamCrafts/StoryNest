@@ -8,7 +8,7 @@ import { useAuthContext } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { Leaf } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useClosestUniqueSlug } from '../../utils';
+import { getClosestUniqueSlug } from '../../utils';
 
 
 function PostForm({post}) {
@@ -119,7 +119,7 @@ function PostForm({post}) {
         toast("Story ID already exists.");
         const toastId = toast.loading("Finding an available Story ID...");
         try {
-          const newSlug = await useClosestUniqueSlug(data.slug);
+          const newSlug = await getClosestUniqueSlug(data.slug);
           setValue("slug", newSlug);
           setAutoSlug(false);
           toast.success(`Story ID changed to:\n "${newSlug}"`, { id: toastId });

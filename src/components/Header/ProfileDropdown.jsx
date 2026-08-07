@@ -3,6 +3,7 @@ import { X } from "lucide-react";
 import UserAvatarIcon from "../General/UserAvatarIcon";
 import LogoutBtn from "./LogoutBtn";
 import { useAuthContext } from "../../context/AuthContext";
+import { useEffect,useRef } from "react";
 
 export default function ProfileDropdown({
   user = {
@@ -15,8 +16,29 @@ export default function ProfileDropdown({
   const auth = useAuthContext();
   user.email = auth.userData.email;
   user.name = auth.userData.name;
+
+
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => { 
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target)
+      ) {
+        closeDropdown();
+      }
+    };
+
+    document.addEventListener("mousedown", handleOutsideClick);
+
+  return () => {
+      document.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, [closeDropdown]);
+
   return (
-    <div className="absolute -right-4 top-14 z-50 mt-2 w-64 overflow-hidden rounded-2xl border border-green-100 bg-[#fbfefb] shadow-2xl backdrop-blur-3xl">
+    <div ref={dropdownRef} className="absolute -right-4 top-14 z-50 mt-2 w-64 overflow-hidden rounded-2xl border border-green-100 bg-[#fbfefb] shadow-2xl backdrop-blur-3xl">
 
       {/* Close Button */}
       <button

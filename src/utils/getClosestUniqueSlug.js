@@ -1,4 +1,4 @@
-// useClosestUniqueSlug.js
+// getClosestUniqueSlug.js
 
 import appwriteService from "../appwrite/config";
 import words from "./words";
@@ -15,7 +15,7 @@ async function slugExists(candidate) {
   }
 }
 
-export default async function useClosestUniqueSlug(previousSlug) {
+export default async function getClosestUniqueSlug(previousSlug) {
   // 1. Try predefined words
   for (const word of words) {
     const candidate = `${previousSlug}-${word}`;

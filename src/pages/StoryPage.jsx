@@ -196,17 +196,23 @@ export default function StoryPage() {
 
     if (!loading && !canSee) {
         return (
-            <div className="max-w-lg mx-auto my-4 px-4">
-                <CommonBox className="text-center py-10">
-                    <h2 className="text-2xl font-bold text-gray-800">
-                        Story not found or you don't have permission to view it.
-                    </h2>
+            <div className="mx-auto max-w-lg px-4 py-10">
+                <CommonBox className="px-6 py-10 text-center">
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-green-50 text-green-700">
+                        <TriangleAlert className="h-6 w-6" />
+                    </div>
 
+                    <p className="mt-5 text-lg font-semibold text-gray-800">
+                        Story not found or unavailable
+                    </p>
+
+                    <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-gray-500">
+                        This story may be private, deleted, or you may not have
+                        permission to view it.
+                    </p>
 
                     <div className="mt-6">
-                        <CommonButton
-                            onClick={() => navigate("/discover")}
-                        >
+                        <CommonButton onClick={() => navigate("/discover")}>
                             Back to Discover
                         </CommonButton>
                     </div>
