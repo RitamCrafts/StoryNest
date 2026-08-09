@@ -12,6 +12,7 @@ export default function ProfileDropdown({
   },
   onLogout,
   closeDropdown,
+  buttonRef,
 }) {
   const auth = useAuthContext();
   user.email = auth.userData.email;
@@ -24,7 +25,8 @@ export default function ProfileDropdown({
     const handleOutsideClick = (event) => { 
       if (
         dropdownRef.current &&
-        !dropdownRef.current.contains(event.target)
+        !dropdownRef.current.contains(event.target) &&
+        !(buttonRef?.current && buttonRef.current.contains(event.target))
       ) {
         closeDropdown();
       }
